@@ -25,7 +25,7 @@ now the tools more usage / trendy are:
 
 HTML is: Hyper Text Markup Language 
 
-With HTML creat "DOM" thet we interact with JS (JavaScript) and CSS (Cascading Style Sheets)
+With HTML creat "DOM" (Document Object Model) thet we interact with JS (JavaScript) and CSS (Cascading Style Sheets)
 
 In HTML are present different tag for different "situation"
 
@@ -92,6 +92,15 @@ example by class element:
         fontsize: 10px;
         background-color: red;
     }
+
+example by ID element:
+    #divByExample {
+        margin: 10px;
+        padding: 10px;
+        fontsize: 10px;
+        background-color: red;
+    }
+
 ```
 
 same syntax for other tag (element / class / id).
@@ -161,6 +170,167 @@ son2
 
 if you want amplyed your command you can follow this website: <a href='https://css-tricks.com/snippets/css/complete-guide-grid/'> css-tricks </a>
 
+now that you have learned how to use the css and principal commands, you can just follow these commands for learn flex-box
 
+```
 
+father {
+    display: flex
+    justify-content: center
+    align-items: center
+}
+
+son{
+    bgcolor: white
+    width: 200px
+    height: 200px
+}
+
+```
  
+ in this case you have set the elemnt in center of display.
+ the element / command that you must learn is "display: flex"  this enables to flex-box, with flex-box you can set position of a elemnet in different methods.
+ now us see seample method with "justify-content e align-items", remembre this command is differente by orientation of elemnet.
+ this follow image is example how you can set orientation of elemnet in different methods. (the command is  " flex-direction: direction ")
+
+ <img src='./assets/img/flex-direction.png' style=' height: 200px'>
+
+ you can set other types of position with :
+
+ - Relative 
+ - Absolute
+ - Sticky
+ - Fixed
+ - Static
+
+an example of this command is prensent in <a hreft='https://css-tricks.com/absolute-positioning-inside-relative-positioning/'> css-tricks </a>
+
+
+> [!TIP]<br>
+> Remember that few the people developing in only CSS and HTML, maybe you will usage a library or framework as: "bootstrap or tailwind".
+
+
+## Bootstrap and Tailwind
+
+Bottstrap and Tailwind are available in the following links:
+
+- <a href='https://getbootstrap.com/docs/5.3/getting-started/introduction/'> Bootstrap </a>
+
+- <a href='https://tailwindcss.com/docs/installation'> Tailwind </a>
+
+these are the most popular framework, tailwind is different by bootstrap because tailwind talk to machine in low level languge.
+the syntax is different by between their an expression is color.
+In bootstrap are presnet default colors same tailwind but in tailwind is possible to customize an example: 
+
+```
+
+bootstrap:
+<p class="text-primary">.text-primary</p>
+<p class="text-secondary">.text-secondary</p>
+<p class="text-success">.text-success</p>
+<p class="text-danger">.text-danger</p>
+<p class="text-warning">.text-warning</p>
+<p class="text-info">.text-info</p>
+<p class="text-light bg-dark">.text-light</p>
+<p class="text-dark">.text-dark</p>
+<p class="text-muted">.text-muted</p>
+<p class="text-white bg-dark">.text-white</p>
+
+
+tailwind:
+
+<p class="text-sky-400/100">The quick brown fox...</p>
+<p class="text-sky-400/75">The quick brown fox...</p>
+<p class="text-sky-400/50">The quick brown fox...</p>
+<p class="text-sky-400/25">The quick brown fox...</p>
+<p class="text-sky-400/0">The quick brown fox...</p>
+
+special:
+<p class="text-[#50d71e]">The quick brown fox...</p>
+
+```
+
+
+in taiwild the special syntax "text-[...]" allows us are specifically in value that as want
+
+but maybe a most specifically feature usage is sistem grid, that is dofferent in between their.
+
+### Bootstrap
+- in bootstrap follow this path for build a good sistem grid: 
+
+```
+.container
+    .row
+        .col
+```
+
+- are present differente types container you can finde in this <a href='https://getbootstrap.com/docs/4.0/layout/grid/'>link</a> 
+
+- remember taht you can insert more col in row but you can't insert more rows in the row.
+
+```
+    YES:
+    .container
+        .row
+            .col-6
+            .col-6
+            
+    NO:
+    .container
+        .row
+            .row
+            .row
+```
+
+but you can insert more rows in a col
+```
+.container
+    .row
+        .col
+            .row
+            .row
+```
+you can replace the cycle
+
+most important that you follow the great path 
+
+```
+.container
+    .row
+        .col
+```
+
+- remember that you can max set of number of col 12.
+
+### Tailwind
+
+in tailwind, you can use the following path for construction the system grid:
+
+```
+<div class="min-h-screen flex items-center justify-center">
+  <div class="grid grid-cols-3 grid-rows-3 gap-4">
+    <div>Cell 1</div>
+    <div>Cell 2</div>
+    <div>Cell 3</div>
+    <div>Cell 4</div>
+    <div>Cell 5</div>
+    <div>Cell 6</div>
+    <div>Cell 7</div>
+    <div>Cell 8</div>
+    <div>Cell 9</div>
+  </div>
+</div>
+```
+
+an example of system grid is:
+
+<img src='./assets/img/tailwind-grid.png' style=' height: 200px'>
+
+is more similar to bootstrap because max number of columns are 12 (as bootstrap)
+but the substantial difference is that:
+
+- bootstrap usage call as "conatiner, row and col"
+- tailwind usage only call "grid grid-cols grid-rows"
+
+Us started say the main differences because are essential for start to say more argument in simple mode, having said that if you have a quetsion / problem you can write me for requesting help.
+
