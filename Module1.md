@@ -205,6 +205,85 @@ son{
 
 an example of this command is prensent in <a hreft='https://css-tricks.com/absolute-positioning-inside-relative-positioning/'> css-tricks </a>
 
+list and example of command of css style:
+
+    - when we want shadow of an object we can set propiety "box-shadow" but in some case we want the shadow of a elemnti in png we can usage "filter: drop-shadow()"
+
+        example:
+
+        ```
+        CSS:
+
+        .img1{
+            box-shadow: 10px 7px 20px orange;
+        }
+
+        .img2{
+            filter: drop-shadow(10px 7px 20px orange);
+        }
+
+
+        HTML:
+        
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link rel="stylesheet" href="./assets/css/style.css">
+        </head>
+        <body>
+            <img src="./assets/img/PNG_transparency_demonstration_1.png" alt="" class="img1">
+            <img src="./assets/img/PNG_transparency_demonstration_1.png" alt="" class="img2">
+        </body>
+        </html>
+
+        ```
+
+        the result is:
+
+        <img src='./assets/img/box-shadow-png.png' style=' height: 200px'>
+
+    - If you want apply a background color to the text, you can use the following syntax:
+
+        ```
+        text{
+        background-color: black;
+        }
+        ```
+
+        but if you want clip a img as backgrount color you can use the following syntax:
+
+        ```
+        HTML:
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link rel="stylesheet" href="./assets/css/style.css">
+        </head>
+        <body>
+            <h1>MY TEXT HAVE A BG</h1>
+        </body>
+        </html>
+
+        CSS:
+
+        h1{
+        background-image: url("https://files.123freevectors.com/wp-content/original/105927-blue-and-white-diagonal-lines.jpg");
+        background-size: cover;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-family: Arial, Helvetica, sans-serif;
+        }
+        ```
+
+
 
 > [!TIP]<br>
 > Remember that few the people developing in only CSS and HTML, maybe you will usage a library or framework as: "bootstrap or tailwind".
