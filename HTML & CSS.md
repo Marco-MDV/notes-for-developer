@@ -284,6 +284,168 @@ list and example of command of css style:
         ```
 
 
+### Animations
+
+#### hover
+
+if you want activate an element whend you hover on a element you can usage the following command:
+
+```
+.card{
+    background-color: aquamarine;
+}
+
+.card:hover{
+    background-color: red;
+}
+```
+
+in this case you are changing the backgroundwhend you do hover on element, but you can usage this action for other effect.
+
+andvanced element:
+
+```
+HTML:
+
+    <div class="cards">
+        <div class="card red">
+            <p class="tip">Hover</p>
+            <p class="second-text">LOREM</p>
+        </div>
+        <div class="card blue">
+            <p class="tip">Hover</p>
+            <p class="second-text">LOREM</p>
+        </div>
+        <div class="card green">
+            <p class="tip">Hover</p>
+            <p class="second-text">LOREM</p>
+        </div>
+    </div>
+
+CSS:
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.green{
+    background-color: green;
+}
+
+.cards .card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+
+.cards .card p.tip{
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text{
+    font-size: 0.7em;
+}
+
+.cards .card:hover{
+    transform: scale(1.2,1.2);
+}
+
+.cards:hover > .card:not(:hover){
+    filter: blur(10px);
+    transform: scale(0.9,0.9);
+}
+
+
+```
+
+#### keyframes
+
+Now that you know hover effect, and general effects, i can say "animations" in CSS.
+
+You developing a code and apply a simple code as:
+
+```
+.card{
+    background-color: aquamarine;
+}
+
+.card:hover{
+    background-color: red;
+}
+```
+
+The color change in few seconds, for people this is strange because better see a gradual change that istant change.
+
+for this you effect can create a animation, example:
+
+```
+.card{
+    background-color: aquamarine;
+}
+
+.card:hover{
+    animation: change-color 1s linear forwards !important;
+}
+
+@keyframes change-color{
+    from{
+        background-color: aquamarine;
+    }to{
+        background-color: red;
+    }
+}
+```
+
+what is "keyframes" ? keyframes is rule in CSS for strat a animation, the syntax is similar:
+
+
+```
+@keyframes x{
+    from{
+        background-color: aquamarine;
+    }to{
+        background-color: red;
+    }
+}
+
+@keyframes y{
+    0%{
+        background-color: aquamarine;
+    }50%{
+        background-color: blue;
+    }100%{
+        background-color: red;
+    }
+}
+```
+
+the main different between these syntax is:
+
+1- start in a position and finish other <br> 2- start in a position, pass in other and ends in another
+
+(the explanation is more sample because this's essentially for function of this feature)
+
 
 > [!TIP]<br>
 > Remember that few the people developing in only CSS and HTML, maybe you will usage a library or framework as: "bootstrap or tailwind".
