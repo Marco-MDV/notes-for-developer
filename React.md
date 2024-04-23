@@ -1,4 +1,5 @@
 # REACT
+
 ### in this caption we look:
 1. the basic teory react
 2. how start a basic project with react
@@ -6,7 +7,13 @@
 4. how to impruve a library (as bootstrap) or framework (as tailwind)
 
 
-## basic teory React 
+## List of arguments
+
+- [Basic teory React](#basic-teory-react)
+
+- [ReactBootstrap and seample Bootstrap](#reactbootstrap-and-seample-bootstrap )
+
+## Basic teory React 
 
 When we say "what is react?" this's a library that allows us using component for building a our project in smart mode.
 (remember that react is library end not is framework as Angular)
@@ -38,21 +45,24 @@ now i say how to using NodeJS for install boilerplate of react.
 - npm start   
 ```
 
+> [!NOTE]  
+> This's not only method for download react, are present different methods for install react an example is with <a href='https://vitejs.dev/guide/'>Vite</a>
+
 now that you have creat your place for work i can say that React using the "jsx" as syntax, this is more similar to simple js but is a version with steroids, then we will see the differences.
 
 in react are present a particular consept, you can imagine your app as body and this is component by atoms, we can say that atoms are component develop in React.
 we can replay the same atom in more part of body.
-(we can simply say that the components are classical functions/callback.)
+(we can "simply say" that the components are classical functions/callback.)
 
-example:
+example of component:
 
 <img src='./assets/img/exampleComponentInReact.png'>
 
-Another propiety essentially is the "proprs" , we can set more value in a function/component/atom with the props, an example:
+Another essential propiety essentially is the "proprs" , we can set more value in a function/component/atom with the props, an example:
 
 <img src='./assets/img/exampleProps.png'>
 
-you can import primitive values (string,numeric,array and object)
+you can import primitive values (string,numeric,array and object) and callBack.
 
 > [!TIP]<br>
 > when you callback a props you can "destructure" the propieties using thi syntax:
@@ -116,6 +126,8 @@ const Example = function() {
 
 > [!TIP]<br>
 >
+>#### Remember that only a tip, this function if not essential for your code don't apply.
+>
 >if you want get data by server frist that load page you can inser the "request" in head as your application can be loaded with the data inside.  
 >example:
 >
@@ -123,4 +135,244 @@ const Example = function() {
 >
 >p.s.
 >remember that this has necesry need onload function 
+
+
+A few moment ago we said that React using JSX and not only JS, what is the different?
+JSX means "JavaScript XML", when in past us using only: "HTML, CSS and JS" for creating a good web app now is using "JSX" for modify the "Virtual DOM / React DOM" then do merge with real DOM.
+
+example of old basic code/olde code:
+```
+HTML:
+   <html>
+
+   <head>
+      <title>To-Do List App</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+   </head>
+
+   <body>
+      <div class="container">
+         <h1>To-Do List</h1>
+         <input type="text" id="taskInput" placeholder="Add a new task..." />
+         <button onclick="addTask()">Add Task</button>
+         <ul id="taskList"></ul>
+      </div>
+
+      <script src="script.js"></script>
+   </body>
+
+   </html>
+
+
+CSS:
+
+   body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+   }
+
+   .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   }
+
+   h1 {
+      text-align: center;
+      color: #333;
+   }
+
+   input,
+   button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      box-sizing: border-box;
+   }
+
+   ul {
+      list-style: none;
+      padding: 0;
+   }
+
+   li {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #e2e2e2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   .completed {
+      text-decoration: line-through;
+      color: gray;
+   }
+
+
+JS:
+
+   function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskList = document.getElementById('taskList');
+
+      const taskText = taskInput.value.trim();
+
+      if (taskText !== "") {
+         const newTask = document.createElement('li');
+         newTask.textContent = taskText;
+
+         const removeButton = document.createElement('button');
+         removeButton.textContent = 'Remove';
+         removeButton.onclick = () => removeTask(newTask);
+         newTask.appendChild(removeButton);
+
+         newTask.addEventListener('click', () => toggleComplete(newTask));
+
+         taskList.appendChild(newTask);
+
+         taskInput.value = "";
+      }
+   }
+
+   function removeTask(task) {
+      task.remove();
+   }
+
+   function toggleComplete(task) {
+      task.classList.toggle('completed');
+   }
+
+```
+
+In react sintax:
+
+```
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+    const [tasks, setTasks] = useState([]); 
+    const [taskInput, setTaskInput] = useState(''); 
+
+    const addTask = () => {
+        if (taskInput.trim()) {
+            setTasks([...tasks, { text: taskInput.trim(), completed: false }]);
+            setTaskInput('');
+        }
+    };
+
+    const removeTask = (index) => {
+        const updatedTasks = tasks.filter((_, taskIndex) => taskIndex !== index);
+        setTasks(updatedTasks);
+    };
+
+    const toggleComplete = (index) => {
+        const updatedTasks = tasks.map((task, taskIndex) => {
+            if (taskIndex === index) {
+                return { ...task, completed: !task.completed };
+            }
+            return task;
+        });
+        setTasks(updatedTasks);
+    };
+
+    return (
+        <div className="container">
+            <h1>To-Do List</h1>
+            <input
+                type="text"
+                value={taskInput}
+                onChange={(e) => setTaskInput(e.target.value)}
+                placeholder="Add a new task..."
+            />
+            <button onClick={addTask}>Add Task</button>
+            <ul>
+                {tasks.map((task, index) => (
+                    <li
+                        key={index}
+                        className={task.completed ? 'completed' : ''}
+                        onClick={() => toggleComplete(index)}
+                    >
+                        {task.text}
+                        <button onClick={() => removeTask(index)}>Remove</button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
+
+export default App;
+```
+the css is same
+
+In React are present different components that you can use, an example is: "hook".
+the `"hook"` are functions that allow you to use state and other React features without writing a class. 
+
+list of hook:
+```
+1. useState
+   - Allows you to add state to functional components.
+   - Returns an array with the current state value and a function to update it.
+
+2. useEffect
+   - Allows you to perform side effects in functional components.
+   - It can be used for data fetching, subscriptions, setting up timers, and more.
+   - Takes a callback function and an optional dependencies array.
+
+3. useContext
+   - Allows you to use context (provided by React.createContext) in functional components
+   - Useful for managing global state across the app.
+   
+4. useReducer
+   - An alternative to useState that allows more complex state management.
+   -Provides a reducer function to handle state changes and a dispatch function.
+   
+5. useMemo
+   - Allows you to memoize expensive functions so they don't run unnecessarily.
+   - Returns a memoized value.
+   
+6. useCallback
+   - Allows you to memoize functions to prevent unnecessary re-creations.
+   - Returns a memoized function.
+   
+7. useRef
+   - Allows you to create a mutable reference to a value that persists across re-renders.
+   - Often used for accessing and manipulating DOM elements.
+   
+8. useLayoutEffect
+   - Similar to useEffect, but runs synchronously after all DOM mutations.
+   - Useful for layout-related changes that need to be made before the browser repaints the UI.
+   
+9. useImperativeHandle
+   - Allows you to customize the instance value that is exposed to a parent component when using `forwardRef`.
+   - Useful for creating custom component APIs.
+   
+10. useDebugValue
+   - Allows you to add a label for custom hooks to aid in debugging.
+   - Displays the label in React DevTools.
+   
+11. Custom Hooks
+   - These are functions that let you extract and reuse component logic.
+   - Custom hooks use the built-in hooks mentioned above to create reusable and modular functions.
+   
+```
+
+
+## ReactBootstrap and seample Bootstrap 
+
+Now that you know what is "JSX", what doing react with DOM now we can say introduce React-Bootstrap and seample Bootstrap.
+
+> [!NOTE]  
+> IF you don't know what is Bootstrap please read the file of this argument
+
+for the installing you can follow the following documentation: <a href='https://www.geeksforgeeks.org/react-bootstrap-dropdown-component/'>React Bootstrap Download</a>
+
+Why us using react-bootstrap? Because some elements in bootstrap interact with real DOM and this is a problem because when using React you stay to work on virtual DOM then do merge with real DOM.
+In React Bootstrap are present few components, but remember that absent components are present in normal Bootstrap.
 
