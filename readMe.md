@@ -16,4 +16,4 @@ the arguments actually present are:
 - Node.js (incoming)
 
 ### more info
-If you want to support this project, other and me, you can follow on Github, <a href='linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a> and <a href='https://youtube.com/@Marco.De.Vincentiis?si=u_7Niczm0fMgbv_a'>Youtube</a>!
+If you want to support this project, other and me, you can follow on Github, <a href='https://linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a> and <a href='https://youtube.com/@Marco.De.Vincentiis?si=u_7Niczm0fMgbv_a'>Youtube</a>!
