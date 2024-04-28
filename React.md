@@ -369,10 +369,60 @@ list of hook:
 Now that you know what is "JSX", what doing react with DOM now we can say introduce React-Bootstrap and seample Bootstrap.
 
 > [!NOTE]  
-> IF you don't know what is Bootstrap please read the file of this argument
+> If you don't know what is "Bootstrap" please read the file of this argument
 
 for the installing you can follow the following documentation: <a href='https://www.geeksforgeeks.org/react-bootstrap-dropdown-component/'>React Bootstrap Download</a>
 
 Why us using react-bootstrap? Because some elements in bootstrap interact with real DOM and this is a problem because when using React you stay to work on virtual DOM then do merge with real DOM.
 In React Bootstrap are present few components, but remember that absent components are present in normal Bootstrap.
 
+
+### ReactBootstrap
+
+1. In ReactBootstrap are present same components that are present in "Bootstrap", maybe you stay requirement "why is present ReactBootstrap if same bootstrap?" sample because bootstrap interacts with real DOM and this is a problem for React because her interact with virtual DOM.
+For solved this problem reactBootstrap give special component, but as equal bootstrap, in their library.
+
+example:
+
+```
+bootstrap:
+
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <p>i'm a text</p>
+      </div>
+   </div>
+</div>
+
+
+
+ReactBootstrap:
+
+<Container>
+   <Row>
+      <Col>
+         <p>i'm a text</p>
+      </Col>
+   </Row>
+</Container>
+
+
+```
+
+different syntax but same functionality.
+if you want improved this function you can find more <a href='https://react-bootstrap.netlify.app/docs/layout/grid/'>info here</a>.
+
+2. Another essential point is if you don't fount a component in ReactBootstrap you can found in sample bootstrap, an example is "Tooltips" but you can foun in bootstrap. (if you are interessed to discovered more example you can found on IA as ChatGPT or Gemini).
+3. Another essential point is that system gris is same in every verion of Bootstrap
+4. when you want specific unity of column you can
+   ```
+   Bootstrap:
+   <div class="col-*/col">
+   <div>
+
+   ReactBootstrap:
+   <Col xs/md/lg = {*}>
+   </Col>
+   ```
+   Where are present "*" you can put your measure
