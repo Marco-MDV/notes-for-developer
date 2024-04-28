@@ -2,7 +2,7 @@
 
 
 ### Introduction
-Hi every one, this is a simple notes of junior developer for other developer!
+Hi every one, this is a simple notes of junior developer for other developers!
 this project is born for help developers for theory of arguments and syntax of it, if you are interested you can read file or do download.
 
 
@@ -16,4 +16,4 @@ the arguments actually present are:
 - Node.js (incoming)
 
 ### more info
-If you want to support this project, other and me, you can follow on Github, Linkedin and Youtube!
+If you want to support this project, other and me, you can follow on Github, <a href='linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a> and <a href='https://youtube.com/@Marco.De.Vincentiis?si=u_7Niczm0fMgbv_a'>Youtube</a>!
