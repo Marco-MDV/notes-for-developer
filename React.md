@@ -363,6 +363,72 @@ list of hook:
    
 ```
 
+### Elevation state
+When in react we want using same value but by two different component we can elevate state of component.
+How? it's seample!
+you remember that a component can has a value/memory? okay if you don't remember this's not a problem because down here you can found an example:
+   ```
+   <!-- evetual import -->
+
+   export function ExampleMemory(){
+      const [show, setShow] = useState(false);
+      return(
+         <butto onClick={() => setShow(!show)}>Example</butto>
+         <p className={show ? 'show' : 'hide'}>example text</p>
+      )
+   }
+
+   ```
+(the class:"show" and "hide" are only example)
+As you can look "show" is our value for the component, but if we want change same value for components, easy:
+1. frist component:
+   ```
+   <!-- evetual import -->
+
+   export function ExampleMemory({setShow, show}){
+      return(
+         <butto onClick={() => setShow(!show)}>Example</butto>
+      )
+   }
+   ```
+
+2. second component:
+   ```
+   export function ExampleText({show}){
+      return(
+         <p className={show ? 'show' : 'hide'}>example text</p>
+      )
+   }
+   ```
+
+3. third component:
+   ```
+   <!-- evetual import -->
+
+   export function ElevateState(){
+      const [show, setShow] = useState(false);
+      return(
+         <>
+            <ExampleMemory
+               show={show}
+               setShow={setShow}
+            />
+            <ExampleText
+               show={show}
+            />
+         </>
+      )
+   }
+   ```
+
+We have created three components, that the father "ElevateState" contain the children "ExampleText" and "ExampleMemory".
+The memory that we need is "show" and we can set with "setShow" to pass both values as props to children.
+With children "ExampleMemory" set "onClick" the function "setShow" that change default value of "show" when is active.
+when the value is true the component is "show" when is false the component in "hide".
+Now i believe that's seample understand.
+
+
+
 
 ## ReactBootstrap and seample Bootstrap 
 
