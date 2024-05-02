@@ -425,12 +425,113 @@ We have created three components, that the father "ElevateState" contain the chi
 The memory that we need is "show" and we can set with "setShow" to pass both values as props to children.
 With children "ExampleMemory" set "onClick" the function "setShow" that change default value of "show" when is active.
 when the value is true the component is "show" when is false the component in "hide".
-Now i believe that's seample understand.
+Now i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
 
+### Global state
 
+now taht you know elevation state and remember what is memory of a component, you can lear what is global state.
+Global state is a state (or more than one) global for every parts of application (but you can set scoop of this as you want), frist to say what is this you must know what is "conText".
+Context is a method for pass props from parent to child component(s), now that you know what is this you can remove this from you knowledge and start learn Redux.
 
+some example of differences between:
+| Context    | Redux |
+| -------- | ------- |
+| less secure  | more secure  |
+| Context is simpler and easier to use than Redux. | Redux is more complex and has a steeper learning curve. |
+| heavier | less heavy |
 
-## ReactBootstrap and seample Bootstrap 
+Now you know what is "conText" i start to say how to impruve it.
+
+1. creat file that contain the concerned function:
+
+   ```
+      import { useState, createContext } from 'react';
+
+      export const ThemeContext = createContext()
+
+      export const ThemeProvider = ({children}) =>{
+
+         const [selectTheme, setSelectTheme] = useState(true)
+         const hendleTheme = () => {setSelectTheme(!selectTheme)}
+
+         return(
+            <ThemeContext.Provider value={{selectTheme, hendleTheme}}>
+                  {children}
+            </ThemeContext.Provider>
+         )
+      }
+   ```
+   we have: 
+
+   - import "useState" and "createContext" from "react"
+   - start 2 variable ("ThemeContext" and "ThemeProvider"), the first is associated "createContext" that we have import then second we have create the component that will usage for inject the value. (remember that here we usage a special props "children" for import all value)
+   - inside the component we have set "ThemeContext.Provider" this's fragment that contains all component and set value: "selectTheme" "hendleTheme" that need for injection
+
+2. import "ThemeProvider":
+
+   ```
+   import { ThemeProvider } from './path/NameFileForTextContext.js';
+   
+   function App() {
+      <ThemeProvider>
+         <MyNav/>
+         <MyMain/>
+         <MyFooter/>
+      </ThemeProvider>
+   }
+
+   ```
+
+4. set  in the components the value that we want (that we change)
+
+   ```
+   export default function Switch() {
+
+    const {hendleTheme, selectTheme} = useContext(ThemeContext)
+
+    return (
+      <Navbar expand="lg" className={selectTheme?null:'bg-dark'}>
+         <input onClick={()=>hendleTheme()} type="checkbox" />
+      </Navbar>
+    )
+   }
+
+   ```
+
+5. set in the components the value that we want (that change)
+
+   ```
+   const {selectTheme} = useContext(ThemeContext)
+   return (
+         <footer className={(selectTheme?'bg-info':'bg-dark')}>
+               <Container>
+                  <Row>
+                     <Col className='p-3'>
+                           <div className={' d-flex justify-content-center align-content-center gap-5 flex-wrap'}>
+                              {
+                                 arrayInfoPages.map((page , index) => {
+                                       return (
+                                          <Link to='/' key={index} >{page}</Link>
+                                       )
+                                 })
+                              }
+                           </div>
+                           <hr />
+                           <div className='text-center'>
+                              <TextInfo text="© 2024 EpiBooks, Inc" />
+                           </div>
+                     </Col>
+                  </Row>
+               </Container>
+         </footer>
+      )
+
+   ```
+
+Now you know how import a global variable in all component in your app.
+Now i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
+   ## ReactBootstrap and seample Bootstrap 
 
 Now that you know what is "JSX", what doing react with DOM now we can say introduce React-Bootstrap and seample Bootstrap.
 
