@@ -531,7 +531,77 @@ Now you know what is "conText" i start to say how to impruve it.
 Now you know how import a global variable in all component in your app.
 Now i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
 
-   ## ReactBootstrap and seample Bootstrap 
+### Rooting
+
+What is the rooting in react?
+When we want switching between pages in past we used a link for page now that you konw what is a "single page application" you can usage the benefits of this.
+Now we don't use the link for a page but create a single page that we modify only interesting part when do click on link.
+In the past we used:
+
+```
+<a href='https://www.google.com'>old link</a>
+```
+but now we use:
+```
+<Link to={/google}>new link</Link>
+```
+
+how to improve this? it's sample:
+1. install react router dom library <a href='https://reactrouter.com/en/main/start/tutorial'>Link</a>
+2. make "cd 'project'" in the project 
+3. make "npm install react-router-dom"
+4. localforage match-sorter sort-by npm run dev
+
+Now that you know how get started the rooting you can learn how to use in a project.
+Are present 4 principal component:
+1. "BrowserRouter" - the fragment that contains all component
+2. "Routes" - the fragment that contains all routes
+3. "Route" -  the single route 
+4. Link - a simple link crated by libarry rooting
+
+Now that you know how to download library and principal component, you can lear how to apply:
+example:
+```
+<BrowserRouter>
+   <Routes>
+      <Nav>
+      <Route index element={<Main>} />
+      <Route path="/Main2" element={<Main2 />} />
+      <Route path="*" element={<Error />} />
+   </Routes>
+</BrowserRouter>   
+   <Footer>
+```
+
+Now we have 3 principal component: "Nav", "Main" and "Footer", i structure the project in this way because i want show you how to function.
+When you open the app you can look "Nav", "Main" and "Footer" because "Nav" and "Footer" are static while "Main" is dynamic but is the main component that you see.
+For access at other route you can modify URL path or interact with component Link.
+
+```
+<Container>
+   <Row>
+      <Col>
+         <Link to='/Main2'>Main2</Link>
+      </Col>
+   </Row>
+</Container>
+```
+The "Link" element is equal to "< a href=''> </ a >" link tag default only different is that not refresh the page when click.
+a special route is "*" because this specify that when the path URL is different by all preset you are present in a page error.
+example:
+```
+Path ok:
+ - app/ {main}
+ - app/Main2 {main2 / other page}
+
+Path error: 
+ - app/Main3 {not found and redirect in "*"}
+```
+
+i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
+
+## ReactBootstrap and seample Bootstrap 
 
 Now that you know what is "JSX", what doing react with DOM now we can say introduce React-Bootstrap and seample Bootstrap.
 
