@@ -363,6 +363,243 @@ list of hook:
    
 ```
 
+### Elevation state
+When in react we want using same value but by two different component we can elevate state of component.
+How? it's seample!
+you remember that a component can has a value/memory? okay if you don't remember this's not a problem because down here you can found an example:
+   ```
+   <!-- evetual import -->
+
+   export function ExampleMemory(){
+      const [show, setShow] = useState(false);
+      return(
+         <butto onClick={() => setShow(!show)}>Example</butto>
+         <p className={show ? 'show' : 'hide'}>example text</p>
+      )
+   }
+
+   ```
+(the class:"show" and "hide" are only example)
+As you can look "show" is our value for the component, but if we want change same value for components, easy:
+1. frist component:
+   ```
+   <!-- evetual import -->
+
+   export function ExampleMemory({setShow, show}){
+      return(
+         <butto onClick={() => setShow(!show)}>Example</butto>
+      )
+   }
+   ```
+
+2. second component:
+   ```
+   export function ExampleText({show}){
+      return(
+         <p className={show ? 'show' : 'hide'}>example text</p>
+      )
+   }
+   ```
+
+3. third component:
+   ```
+   <!-- evetual import -->
+
+   export function ElevateState(){
+      const [show, setShow] = useState(false);
+      return(
+         <>
+            <ExampleMemory
+               show={show}
+               setShow={setShow}
+            />
+            <ExampleText
+               show={show}
+            />
+         </>
+      )
+   }
+   ```
+
+We have created three components, that the father "ElevateState" contain the children "ExampleText" and "ExampleMemory".
+The memory that we need is "show" and we can set with "setShow" to pass both values as props to children.
+With children "ExampleMemory" set "onClick" the function "setShow" that change default value of "show" when is active.
+when the value is true the component is "show" when is false the component in "hide".
+Now i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
+### Global state
+
+now taht you know elevation state and remember what is memory of a component, you can lear what is global state.
+Global state is a state (or more than one) global for every parts of application (but you can set scoop of this as you want), frist to say what is this you must know what is "conText".
+Context is a method for pass props from parent to child component(s), now that you know what is this you can remove this from you knowledge and start learn Redux.
+
+some example of differences between:
+| Context    | Redux |
+| -------- | ------- |
+| less secure  | more secure  |
+| Context is simpler and easier to use than Redux. | Redux is more complex and has a steeper learning curve. |
+| heavier | less heavy |
+
+Now you know what is "conText" i start to say how to impruve it.
+
+1. creat file that contain the concerned function:
+
+   ```
+      import { useState, createContext } from 'react';
+
+      export const ThemeContext = createContext()
+
+      export const ThemeProvider = ({children}) =>{
+
+         const [selectTheme, setSelectTheme] = useState(true)
+         const hendleTheme = () => {setSelectTheme(!selectTheme)}
+
+         return(
+            <ThemeContext.Provider value={{selectTheme, hendleTheme}}>
+                  {children}
+            </ThemeContext.Provider>
+         )
+      }
+   ```
+   we have: 
+
+   - import "useState" and "createContext" from "react"
+   - start 2 variable ("ThemeContext" and "ThemeProvider"), the first is associated "createContext" that we have import then second we have create the component that will usage for inject the value. (remember that here we usage a special props "children" for import all value)
+   - inside the component we have set "ThemeContext.Provider" this's fragment that contains all component and set value: "selectTheme" "hendleTheme" that need for injection
+
+2. import "ThemeProvider":
+
+   ```
+   import { ThemeProvider } from './path/NameFileForTextContext.js';
+   
+   function App() {
+      <ThemeProvider>
+         <MyNav/>
+         <MyMain/>
+         <MyFooter/>
+      </ThemeProvider>
+   }
+
+   ```
+
+4. set  in the components the value that we want (that we change)
+
+   ```
+   export default function Switch() {
+
+    const {hendleTheme, selectTheme} = useContext(ThemeContext)
+
+    return (
+      <Navbar expand="lg" className={selectTheme?null:'bg-dark'}>
+         <input onClick={()=>hendleTheme()} type="checkbox" />
+      </Navbar>
+    )
+   }
+
+   ```
+
+5. set in the components the value that we want (that change)
+
+   ```
+   const {selectTheme} = useContext(ThemeContext)
+   return (
+         <footer className={(selectTheme?'bg-info':'bg-dark')}>
+               <Container>
+                  <Row>
+                     <Col className='p-3'>
+                           <div className={' d-flex justify-content-center align-content-center gap-5 flex-wrap'}>
+                              {
+                                 arrayInfoPages.map((page , index) => {
+                                       return (
+                                          <Link to='/' key={index} >{page}</Link>
+                                       )
+                                 })
+                              }
+                           </div>
+                           <hr />
+                           <div className='text-center'>
+                              <TextInfo text="© 2024 EpiBooks, Inc" />
+                           </div>
+                     </Col>
+                  </Row>
+               </Container>
+         </footer>
+      )
+
+   ```
+
+Now you know how import a global variable in all component in your app.
+Now i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
+### Rooting
+
+What is the rooting in react?
+When we want switching between pages in past we used a link for page now that you konw what is a "single page application" you can usage the benefits of this.
+Now we don't use the link for a page but create a single page that we modify only interesting part when do click on link.
+In the past we used:
+
+```
+<a href='https://www.google.com'>old link</a>
+```
+but now we use:
+```
+<Link to={/google}>new link</Link>
+```
+
+how to improve this? it's sample:
+1. install react router dom library <a href='https://reactrouter.com/en/main/start/tutorial'>Link</a>
+2. make "cd 'project'" in the project 
+3. make "npm install react-router-dom"
+4. localforage match-sorter sort-by npm run dev
+
+Now that you know how get started the rooting you can learn how to use in a project.
+Are present 4 principal component:
+1. "BrowserRouter" - the fragment that contains all component
+2. "Routes" - the fragment that contains all routes
+3. "Route" -  the single route 
+4. Link - a simple link crated by libarry rooting
+
+Now that you know how to download library and principal component, you can lear how to apply:
+example:
+```
+<BrowserRouter>
+   <Routes>
+      <Nav>
+      <Route index element={<Main>} />
+      <Route path="/Main2" element={<Main2 />} />
+      <Route path="*" element={<Error />} />
+   </Routes>
+</BrowserRouter>   
+   <Footer>
+```
+
+Now we have 3 principal component: "Nav", "Main" and "Footer", i structure the project in this way because i want show you how to function.
+When you open the app you can look "Nav", "Main" and "Footer" because "Nav" and "Footer" are static while "Main" is dynamic but is the main component that you see.
+For access at other route you can modify URL path or interact with component Link.
+
+```
+<Container>
+   <Row>
+      <Col>
+         <Link to='/Main2'>Main2</Link>
+      </Col>
+   </Row>
+</Container>
+```
+The "Link" element is equal to "< a href=''> </ a >" link tag default only different is that not refresh the page when click.
+a special route is "*" because this specify that when the path URL is different by all preset you are present in a page error.
+example:
+```
+Path ok:
+ - app/ {main}
+ - app/Main2 {main2 / other page}
+
+Path error: 
+ - app/Main3 {not found and redirect in "*"}
+```
+
+i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
 
 ## ReactBootstrap and seample Bootstrap 
 
