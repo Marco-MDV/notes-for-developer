@@ -20,7 +20,7 @@ When we say "what is react?" this's a library that allows us using component for
 React is a most popular library that in the word for developing front-end, his competitor are: "Angular, Vue.js".
 this info is available on gemini IA, are valid until today 11/04/2024:
 
-<img src='./assets/img/competitorsReactJs.png' style=' height: 500px'>
+<img src='../assets/img/competitorsReactJs.png' style=' height: 500px'>
 
 i want say that all actions we can do it with react can be done 'normal' js.
 react is build by Meta and using in facebook, in 2013 is released how project Open Source.
@@ -56,11 +56,11 @@ we can replay the same atom in more part of body.
 
 example of component:
 
-<img src='./assets/img/exampleComponentInReact.png'>
+<img src='../assets/img/exampleComponentInReact.png'>
 
 Another essential propiety essentially is the "proprs" , we can set more value in a function/component/atom with the props, an example:
 
-<img src='./assets/img/exampleProps.png'>
+<img src='../assets/img/exampleProps.png'>
 
 you can import primitive values (string,numeric,array and object) and callBack.
 
@@ -76,15 +76,15 @@ you can import primitive values (string,numeric,array and object) and callBack.
 > ```
 Is present a special props this's call "children" an example of this props is:
 
-<img src='./assets/img/children.png'>
+<img src='../assets/img/children.png'>
 
 his function is insert props value that we passed in side the component/atom.
 
-<img src='./assets/img/childrenInSertValue.png'>
+<img src='../assets/img/childrenInSertValue.png'>
 
 the results is:
 
-<img src='./assets/img/childrenResult.png'>
+<img src='../assets/img/childrenResult.png'>
 
 remember when you want start create an element you must insert all element in a div or in a  react fragment, example:
 
@@ -131,7 +131,7 @@ const Example = function() {
 >if you want get data by server frist that load page you can inser the "request" in head as your application can be loaded with the data inside.  
 >example:
 >
-><img src='./assets/img/scriptInHead.png'>
+><img src='../assets/img/scriptInHead.png'>
 >
 >p.s.
 >remember that this has necesry need onload function 
