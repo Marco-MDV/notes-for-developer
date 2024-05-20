@@ -10,15 +10,15 @@ when speak a developer us can split in two figure:
 
 developers use the same working method:
 <br>
-<img src="./assets/img/styleWork.png">
+<img src="../assets/img/styleWork.png">
 
 when say full-stack it is understood 3 layers:
 
-<img src='./assets/img/layers.png'>
+<img src='../assets/img/layers.png'>
 
 now the tools more usage / trendy are:
 
-<img src='./assets/img/trend.png'>
+<img src='../assets/img/trend.png'>
 
 
 ## HTML
@@ -111,7 +111,7 @@ frist say commands of Flexbox we can say structor of system, we can say are pres
 
 example:
 
-<img src='./assets/img/structureParents.png'>
+<img src='../assets/img/structureParents.png'>
 
 we can call a parents with a similar syntax  said before, remember that you can call a parent with a different syntax for thifferent situation.
 
@@ -193,7 +193,7 @@ son{
  now us see seample method with "justify-content e align-items", remembre this command is differente by orientation of elemnet.
  this follow image is example how you can set orientation of elemnet in different methods. (the command is  " flex-direction: direction ")
 
- <img src='./assets/img/flex-direction.png' style=' height: 200px'>
+ <img src='../assets/img/flex-direction.png' style=' height: 200px'>
 
  you can set other types of position with :
 
@@ -243,7 +243,7 @@ list and example of command of css style:
 
         the result is:
 
-        <img src='./assets/img/box-shadow-png.png' style=' height: 200px'>
+        <img src='../assets/img/box-shadow-png.png' style=' height: 200px'>
 
     - If you want apply a background color to the text, you can use the following syntax:
 
@@ -442,7 +442,8 @@ what is "keyframes" ? keyframes is rule in CSS for strat a animation, the syntax
 
 the main different between these syntax is:
 
-1- start in a position and finish other <br> 2- start in a position, pass in other and ends in another
+1. start in a position and finish other 
+2. start in a position, pass in other and ends in another
 
 (the explanation is more sample because this's essentially for function of this feature)
 
@@ -565,7 +566,7 @@ in tailwind, you can use the following path for construction the system grid:
 
 an example of system grid is:
 
-<img src='./assets/img/tailwind-grid.png' style=' height: 200px'>
+<img src='../assets/img/tailwind-grid.png' style=' height: 200px'>
 
 is more similar to bootstrap because max number of columns are 12 (as bootstrap)
 but the substantial difference is that:
