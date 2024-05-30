@@ -34,6 +34,119 @@ But if you are looking manual defintion:
 
 When a developer start with Node say this's limited, if he's coming of web JS, but this is not correct. If you used JS and interacted with browser, you're using different commando as "Windows" (in web JS) in Node not are present, but you can use other command for do other as "readFileSync/writeFileSync".
 
+When we talk about backend, we can usage more language as python, java or Node.js, lucky for us, we usage Node.js that are more sample.
+in node are present different concept fundamental for a backend as: “Middleware”, “pagination”, “creation of APIs”, “validation content”, “data management” and others.
+
+We now start with “Middleware”, what's this element? First we can talk about work flow, the basic flow is compost the request ('GET','POST','PUT','PATCH' & 'DELETE') , process the request with work that we want and finally back the results.
+But only this work is more seample and not secure for our web app , we can improve 3 element for enhance our code:
+
+- Middleware
+- Validation content
+- Data management
+
+
+#### Middleware
+If in the past we talk about work flow now this change in alternative model:
+
+    - Old:
+        ```
+        1. request
+            2. work request
+                3. response
+        ```
+
+    - New:
+        ```
+        1. request
+            2. middleware
+                3. work request
+                    4. response
+        ```
+
+
+Now that you know where it is allocated the middleware, it is essential that you know how to use it.
+The middleware intercept the request and code inside at it and return the response, that can be an error or a response.
+an example of middleware: 
+1. Logging Middleware
+2. Authentication Middleware
+3. Authorization Middleware
+4. Rate Limiting Middleware
+5. Error Handling Middleware
+6. Body Parsing Middleware
+7. Cookie Parsing Middleware
+8. Static File Serving Middleware
+
+example of middleware:
+
+```
+    name.get('path/that/you/want', middleware, async (req, res, next)=>{
+        try{
+            constwork that you want
+            res.json/send({result: data})
+        }catch(err){
+            next(err)
+        }
+    })
+```
+
+tip:
+- "name" is name of route that we will use if using more than one route. but you can usage all route in a single file as "app.js"
+- i set "get" but is onl example you can set "post", "put", "patch" and "delete"
+- "path/that/you/want" is endpoi that you want
+
+you can usage more than one same time, the syntax is: [name1, name2, name3]
+example:
+
+```
+    name.get('path/that/you/want', [name1, name2, name3], async (req, res, next)=>{
+        try{
+            constwork that you want
+            res.json/send({result: data})
+        }catch(err){
+            next(err)
+        }
+    })
+```
+
+Maybe some question that you have are:
+How to set a middleware? How to import a middleware? Is essential to construct a middleware in different file?
+
+strat to say that not essential that you creat a file only for middleware or a folder for middlewares but is a best practice for optimise the code.
+but now look as you can creat a middleware:
+
+```
+    const error = (err, req, res, next) => {
+        res.send({message: err , status: req.bod.status})
+        next()
+    }
+    module.exports = error;
+```
+for import:
+
+`const error = require('./middleware/error')` <- in file wher you want use middleware
+
+are present two types of middleware:
+- global middleware
+- local middleware
+
+that can different actions but you can split into two types:
+- error
+- request
+
+1. error 
+    is seample that know beacuse is only middleware that present "err" in parameter.
+2. request
+    is seample that know beacuse not have "err" in parameter, but can do other action.
+
+you can set a global middleware and ona local middleware.
+you can set "next(err)" in catch and the code skip the every part of it because stay search middleware eror. (because when you pass an error, only middleware error to be trigger)
+a global for example can be the previous middleware ereor because you pass a error status and the message.
+the local middleware is locate only for the single endpoint that you want.
+
+
+i believe that's seample understand, if it were not so you can send me a message on <a href='https://www.linkedin.com/in/marco-de-vincentiis-98299a217'>Linkedin</a>
+
+
 
 ## MongoDB
 
