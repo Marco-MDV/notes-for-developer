@@ -576,3 +576,40 @@ but the substantial difference is that:
 
 Us started say the main differences because are essential for start to say more argument in simple mode, having said that if you have a quetsion / problem you can write me for requesting help.
 
+
+#### Tailwind Animation
+
+In Tailwind, you can create a custom animation or use the animations to be the default.
+Are present different animation example as:
+
+1. “animate-spin” it's animation that rotate an element in a infinite loop.
+2. “animate-ping” it's animation that create an effect as a ping.
+3. "animate-pulse" it's animation that create an effect as a pulse.
+"animate-bounce" it's animation that create an effect as a ball that jump.
+
+But these animations are combinable with other trigger as: "hover", "active" and other...
+The syntax is: "trigger ":" animate-X" translate "hover:animate-bounce" if you want to create good dynamism, you can insert "duration-TIME" example " hover:animate-bounce  duration-200" it's create a fluid movement.
+But is present the  possibility to create an custom animation in tailwind file "tailwind.config.js".
+Under voice "extend" and than " keyframes" you can write "customClass" example  you create a class for swipe element on left and rename it as "swiperLeft".
+What is the process to create ?
+
+1. open the file
+2. witire the class:
+
+```
+extend:{
+        keyframes:{
+         swiperLeft:{
+        '0%':{
+            opacity: '0',
+            transform: 'translateX(380px)',
+          },
+          '100%':{
+            opacity: '1',
+            transform: 'translateX(0)',
+          }
+}}}
+```
+
+(You can use "from - to" but for me it's more sample to use "0% - 100%" because you can do more of it)
+
