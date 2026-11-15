@@ -1,64 +1,101 @@
-# Google tools for web app
+# Sign in with Google using Passport
 
-When you want create a good web app maybe you need to use different tools for create a good UX / UI and create a safe experience for user, maybe you using struments "offered" by google.
+Use Passport's Google OAuth 2.0 strategy to let users sign in to an Express application with their Google account.
 
-## Passport Google
+## Configure Google
 
-Maybe when a user click a button "Google" for registration or login the developing as creator the services with the "<a href='https://www.passportjs.org/'>Passport</a>" service. </br> (in detail chose: <a href='https://www.passportjs.org/packages/passport-google-oauth20/'>passport-google-oauth20</a>)
-frist to write code you set the <a href='https://console.cloud.google.com/'>API google</a>  :
-1. click on "<a href='https://console.cloud.google.com/apis/library'>Library</a>"
-2. search "People API"
-3.  set the API:
-    - In "Name" set name of your application
-    - In "Origini JavaScript autorizzate" set the backend address
-    - In "URI di reindirizzamento autorizzati" set the backend address plus path "/auth/google/callback"
-4. take "ID client" and "Client secret" 
+1. Create or select a project in [Google Cloud Console](https://console.cloud.google.com/).
+2. Configure the consent screen and add your Google account as a test user if the app is in testing mode.
+3. Create an OAuth client of type **Web application**.
+4. Add `http://localhost:3000/auth/google/callback` to **Authorized redirect URIs**. The value must match the callback URL your application sends, including its scheme, host, port, and path. Register the HTTPS callback separately for production.
+5. Copy the client ID and client secret to your server environment.
 
-What to do for using this? it's realy seample:
-1. Middleware
-2. Write this code:
+See [Google's OAuth 2.0 documentation](https://developers.google.com/identity/protocols/oauth2/web-server).
+
+## Create the Express app
+
+Start in an npm project, then install the dependencies.
+
+```sh
+npm install express express-session passport passport-google-oauth20
 ```
-"const GoogleStrategy = require('passport-google-oauth20').Strategy;"
 
-const googleStrategy = (new GoogleStrategy({
+Create an `.env` file with `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL`, and `SESSION_SECRET`. Set `GOOGLE_CALLBACK_URL` to the redirect URI you registered. Generate a random session secret with the command below and keep the file out of version control.
+
+```sh
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+```
+
+Save the example as `google-login.cjs`.
+
+```js
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const { Strategy: GoogleStrategy } = require('passport-google-oauth20');
+
+const {
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
+    GOOGLE_CALLBACK_URL,
+    SESSION_SECRET,
+} = process.env;
+
+if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET || !GOOGLE_CALLBACK_URL || !SESSION_SECRET) {
+    throw new Error('Set the Google OAuth credentials, callback URL, and session secret.');
+}
+
+const app = express();
+
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { httpOnly: true, sameSite: 'lax' },
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://www.example.com/auth/google/callback"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
+    callbackURL: GOOGLE_CALLBACK_URL,
+    state: true,
+}, (_accessToken, _refreshToken, profile, done) => {
+    done(null, { googleId: profile.id, displayName: profile.displayName });
+}));
 
-module.exports = googleStrategy
-```
-3. Creat file for google login, regustration or both
-4. Write this code:
-```
-const passport = require('passport');
-const googleStrategy = require('../examplePath/oauthGoogle')
-passport.use('google', googleStrategy)
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
 
-google.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] })); 
+app.get('/', (_req, res) => {
+    res.send('<a href="/auth/google">Sign in with Google</a>');
+});
 
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }));
 
-google.get('/auth/google', passport.authenticate('google', { session: false, failureRedirect: `example/path/login` }), async function (req, res, next){
-    try{
-        const googleUser = await yourUserSchema.findOne({ Email: req.user._json.email }) //using req.user for get only essential info 
-        if(!googleUser){
-            ...logic for creat a user and update in db
-        }else{
-            ...logic take data and to do something
-        }
-    }catch(error){
-        next({error: error.message, status: 500});
-    }
-})
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/' }),
+    (_req, res) => res.redirect('/me')
+);
+
+app.get('/me', (req, res) => {
+    if (!req.isAuthenticated()) return res.sendStatus(401);
+
+    res.json(req.user);
+});
+
+app.listen(3000, () => console.log('Open http://localhost:3000'));
 ```
 
-Now you can write the good passport , if you want request me something write me on github or linkeding
+Run the app with a supported Node.js LTS release and open `http://localhost:3000`.
 
-p.s.
-Never is free from Google if you're not pay in cash, you will pay in information.
+```sh
+node --env-file=.env google-login.cjs
+```
+
+The first route starts the sign-in flow. Google returns the user to the callback route, where Passport checks the OAuth state and establishes the session. The example requests the profile scope and uses Google's profile ID to identify the user. Request the email scope only if your application actually needs it.
+
+For a deployed application, use a persistent session store and HTTPS with secure cookies. If you keep a local user database, find or create the account using the Google profile ID and serialize your local user ID. The example uses the default in-memory store for local development.
+
+See [Passport's Google strategy documentation](https://www.passportjs.org/packages/passport-google-oauth20/) and the [Express session documentation](https://expressjs.com/en/resources/middleware/session.html).

@@ -1,578 +1,203 @@
-# Module 1
+# HTML and CSS
 
-## Introduction web developer (front-end & back-end)
+## Front-end and back-end development
 
-when speak a developer us can split in two figure:
-1. front-end developer
-    - the front-end developer using mainly the:"HTML, CSS, Javascript/other language,  Library and freamework as bootstrap and tailwind".
-2. back-end developer
-    - the back-end developer using similar but same time different for logic and other aspect: "NodeJS, Pytohn, Java end other language/freamework"
+The front end runs in the browser and uses HTML, CSS, and JavaScript to display content and handle user interactions. The back end handles requests, applies application rules, and reads or writes data. A full-stack application can be described in three layers: presentation, application logic, and data storage.
 
-developers use the same working method:
-<br>
-<img src="../assets/img/styleWork.png">
-
-when say full-stack it is understood 3 layers:
-
-<img src='../assets/img/layers.png'>
-
-now the tools more usage / trendy are:
-
-<img src='../assets/img/trend.png'>
-
+![Development workflow](../assets/img/styleWork.png)
+![Application layers](../assets/img/layers.png)
 
 ## HTML
 
-HTML is: Hyper Text Markup Language 
+HTML stands for HyperText Markup Language. The browser parses HTML into the Document Object Model (DOM), which JavaScript can interact with and CSS can style.
 
-With HTML creat "DOM" (Document Object Model) thet we interact with JS (JavaScript) and CSS (Cascading Style Sheets)
+| Element | Purpose |
+| --- | --- |
+| `<h1>` through `<h6>` | Headings ordered by level |
+| `<p>` | Paragraph |
+| `<img>` | Image with alternative text where appropriate |
+| `<figure>` | Self-contained content that can have a caption |
+| `<button>` | Control that performs an action |
+| `<span>` | Generic inline container |
 
-In HTML are present different tag for different "situation"
-
-example:
-
-```
-- Title: <h1>,<h2>,<h3>,<h4>,<h5>
-
-- Paragaraph: <p>
-
-- Image: <img>
-
-- Container Image: <figure>
-
-- Button: <button>
-
-- Special section in a text: <span>
-
-```
-
-but when speak of struction of body u can follow this struction:
-
-```
+```html
 <body>
-
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <nav>
-            <!-- place nav here -->
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="#content">Content</a>
         </nav>
-        <main>
-            <!-- place main here -->
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-
+    </header>
+    <main id="content">
+        <h1>Page title</h1>
+        <p>Main content goes here.</p>
+    </main>
+    <footer>Site footer</footer>
 </body>
 ```
 
-we cand say taht HTML is struction of page
-
-
 ## CSS
 
-CSS is: Cascading Style Sheets
+CSS stands for Cascading Style Sheets. A CSS rule uses a selector to choose elements and declarations to set their appearance.
 
-when speak of CSS say style of page.
-
-the sintation is different than other languages example:
-
-```
-examples by name element:
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-example by class element:
-    .divByExample {
-        margin: 10px;
-        padding: 10px;
-        fontsize: 10px;
-        background-color: red;
-    }
-
-example by ID element:
-    #divByExample {
-        margin: 10px;
-        padding: 10px;
-        fontsize: 10px;
-        background-color: red;
-    }
-
-```
-
-same syntax for other tag (element / class / id).
-
-an important thing in CSS is FLex-box, this's more important for set position of element and regularize struction of page.
-
-frist say commands of Flexbox we can say structor of system, we can say are present a grandfather, father, son and grandchildren.
-
-example:
-
-<img src='../assets/img/structureParents.png'>
-
-we can call a parents with a similar syntax  said before, remember that you can call a parent with a different syntax for thifferent situation.
-
-```
-example from grandfather to grandchildren:
-
-main > div > p{
-    color: red;
+```css
+body {
+    margin: 0;
+    padding: 0;
 }
 
-main is "grandfather" , div "father" and p is "grandchildren" (or "son" of "father")
-
-```
-
-Principal regular flexbox: "when the father says a command, the son accepted”
-But remember that the son can set new command inside for command his sons.
-
-the propiety / commad in FlexBox are different following commands are some:
-
-```
-example father with son:
-
-.father{
-    display: flexbox;
-    flex: wrap;
+.example {
+    padding: 10px;
+    font-size: 1rem;
 }
 
-.son1 {
-    width:200px;
+#featured {
+    background-color: lightblue;
 }
 
-.son2 {
-    width:200px;
-}
-
-
-in this case when the screen width is smaller than sum son1 and son2 , the children pass one underneath to the other.
-
-
-example:
-
-screen width > sum :
-
-"
-son1 son2
-"
-
-screen width < sum :
-
-"
-son1
-son2
-"
-
-```
-
-if you want amplyed your command you can follow this website: <a href='https://css-tricks.com/snippets/css/complete-guide-grid/'> css-tricks </a>
-
-now that you have learned how to use the css and principal commands, you can just follow these commands for learn flex-box
-
-```
-
-father {
-    display: flex
-    justify-content: center
-    align-items: center
-}
-
-son{
-    bgcolor: white
-    width: 200px
-    height: 200px
-}
-
-```
- 
- in this case you have set the elemnt in center of display.
- the element / command that you must learn is "display: flex"  this enables to flex-box, with flex-box you can set position of a elemnet in different methods.
- now us see seample method with "justify-content e align-items", remembre this command is differente by orientation of elemnet.
- this follow image is example how you can set orientation of elemnet in different methods. (the command is  " flex-direction: direction ")
-
- <img src='../assets/img/flex-direction.png' style=' height: 200px'>
-
- you can set other types of position with :
-
- - Relative 
- - Absolute
- - Sticky
- - Fixed
- - Static
-
-an example of this command is prensent in <a hreft='https://css-tricks.com/absolute-positioning-inside-relative-positioning/'> css-tricks </a>
-
-list and example of command of css style:
-
-    - when we want shadow of an object we can set propiety "box-shadow" but in some case we want the shadow of a elemnti in png we can usage "filter: drop-shadow()"
-
-        example:
-
-        ```
-        CSS:
-
-        .img1{
-            box-shadow: 10px 7px 20px orange;
-        }
-
-        .img2{
-            filter: drop-shadow(10px 7px 20px orange);
-        }
-
-
-        HTML:
-        
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-            <link rel="stylesheet" href="./assets/css/style.css">
-        </head>
-        <body>
-            <img src="./assets/img/PNG_transparency_demonstration_1.png" alt="" class="img1">
-            <img src="./assets/img/PNG_transparency_demonstration_1.png" alt="" class="img2">
-        </body>
-        </html>
-
-        ```
-
-        the result is:
-
-        <img src='../assets/img/box-shadow-png.png' style=' height: 200px'>
-
-    - If you want apply a background color to the text, you can use the following syntax:
-
-        ```
-        text{
-        background-color: black;
-        }
-        ```
-
-        but if you want clip a img as backgrount color you can use the following syntax:
-
-        ```
-        HTML:
-
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-            <link rel="stylesheet" href="./assets/css/style.css">
-        </head>
-        <body>
-            <h1>MY TEXT HAVE A BG</h1>
-        </body>
-        </html>
-
-        CSS:
-
-        h1{
-        background-image: url("https://files.123freevectors.com/wp-content/original/105927-blue-and-white-diagonal-lines.jpg");
-        background-size: cover;
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        font-family: Arial, Helvetica, sans-serif;
-        }
-        ```
-
-
-### Animations
-
-#### hover
-
-if you want activate an element whend you hover on a element you can usage the following command:
-
-```
-.card{
-    background-color: aquamarine;
-}
-
-.card:hover{
-    background-color: red;
+main > div > p {
+    color: darkred;
 }
 ```
 
-in this case you are changing the backgroundwhend you do hover on element, but you can usage this action for other effect.
+The last selector matches paragraphs that are direct children of a `div` that is itself a direct child of `main`.
 
-andvanced element:
+![Parent and child elements](../assets/img/structureParents.png)
 
-```
-HTML:
+### Flexbox
 
-    <div class="cards">
-        <div class="card red">
-            <p class="tip">Hover</p>
-            <p class="second-text">LOREM</p>
-        </div>
-        <div class="card blue">
-            <p class="tip">Hover</p>
-            <p class="second-text">LOREM</p>
-        </div>
-        <div class="card green">
-            <p class="tip">Hover</p>
-            <p class="second-text">LOREM</p>
-        </div>
-    </div>
+Set `display: flex` on a container to arrange its direct children as flex items. `flex-wrap: wrap` lets the items move onto another line when space runs out.
 
-CSS:
-
-.cards{
+```css
+.cards {
     display: flex;
-    flex-direction: row;
-    gap: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.red{
-    background-color: red;
-}
-
-.blue{
-    background-color: blue;
-}
-
-.green{
-    background-color: green;
-}
-
-.cards .card{
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    height: 100px;
-    width: 100px;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: 400ms;
+    align-items: center;
+    gap: 1rem;
 }
 
-
-.cards .card p.tip{
-    font-size: 1em;
-    font-weight: 700;
+.card {
+    flex: 0 1 200px;
 }
-
-.cards .card p.second-text{
-    font-size: 0.7em;
-}
-
-.cards .card:hover{
-    transform: scale(1.2,1.2);
-}
-
-.cards:hover > .card:not(:hover){
-    filter: blur(10px);
-    transform: scale(0.9,0.9);
-}
-
-
 ```
 
-#### keyframes
+`justify-content` controls alignment along the main axis and `align-items` controls alignment along the cross axis. `flex-direction` determines which way the main axis runs. Give the container extra height if you want vertical centering to be visible in a row layout.
 
-Now that you know hover effect, and general effects, i can say "animations" in CSS.
+![Flexbox directions](../assets/img/flex-direction.png)
 
-You developing a code and apply a simple code as:
+See the [MDN Flexbox guide](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox) and [CSS positioning reference](https://developer.mozilla.org/en-US/docs/Web/CSS/position) for `static`, `relative`, `absolute`, `fixed`, and `sticky` positioning.
 
+### Shadows and gradient text
+
+`box-shadow` follows an element's box. `drop-shadow()` follows the visible pixels of an image, including the outline of a transparent PNG.
+
+```css
+.img1 {
+    box-shadow: 10px 7px 20px orange;
+}
+
+.img2 {
+    filter: drop-shadow(10px 7px 20px orange);
+}
+
+@supports (background-clip: text) {
+    h1 {
+        background-image: linear-gradient(90deg, #0e4b85, #2476b9);
+        background-clip: text;
+        color: transparent;
+    }
+}
 ```
-.card{
+
+![Comparison of box and drop shadows](../assets/img/box-shadow-png.png)
+
+### Hover and animations
+
+Use a transition to make a change on hover gradual. Use `@keyframes` when an animation needs intermediate stages.
+
+```css
+.card {
     background-color: aquamarine;
+    transition: transform 200ms ease, background-color 200ms ease;
 }
 
-.card:hover{
-    background-color: red;
-}
-```
-
-The color change in few seconds, for people this is strange because better see a gradual change that istant change.
-
-for this you effect can create a animation, example:
-
-```
-.card{
-    background-color: aquamarine;
+.card:hover {
+    background-color: tomato;
+    transform: scale(1.05);
 }
 
-.card:hover{
-    animation: change-color 1s linear forwards !important;
+@keyframes change-color {
+    0% { background-color: aquamarine; }
+    50% { background-color: skyblue; }
+    100% { background-color: tomato; }
 }
 
-@keyframes change-color{
-    from{
-        background-color: aquamarine;
-    }to{
-        background-color: red;
+@media (prefers-reduced-motion: no-preference) {
+    .card.animate:hover {
+        animation: change-color 1s linear forwards;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
     }
 }
 ```
 
-what is "keyframes" ? keyframes is rule in CSS for strat a animation, the syntax is similar:
+The [HTML demo](HTML%26CSS.html) shows shadows, gradient text, and a group of cards with hover effects.
 
+## Bootstrap and Tailwind CSS
 
-```
-@keyframes x{
-    from{
-        background-color: aquamarine;
-    }to{
-        background-color: red;
-    }
-}
-
-@keyframes y{
-    0%{
-        background-color: aquamarine;
-    }50%{
-        background-color: blue;
-    }100%{
-        background-color: red;
-    }
-}
-```
-
-the main different between these syntax is:
-
-1. start in a position and finish other 
-2. start in a position, pass in other and ends in another
-
-(the explanation is more sample because this's essentially for function of this feature)
-
-
-> [!TIP]<br>
-> Remember that few the people developing in only CSS and HTML, maybe you will usage a library or framework as: "bootstrap or tailwind".
-
-
-## Bootstrap and Tailwind
-
-Bottstrap and Tailwind are available in the following links:
-
-- <a href='https://getbootstrap.com/docs/5.3/getting-started/introduction/'> Bootstrap </a>
-
-- <a href='https://tailwindcss.com/docs/installation'> Tailwind </a>
-
-these are the most popular framework, tailwind is different by bootstrap because tailwind talk to machine in low level languge.
-the syntax is different by between their an expression is color.
-In bootstrap are presnet default colors same tailwind but in tailwind is possible to customize an example: 
-
-```
-
-bootstrap:
-<p class="text-primary">.text-primary</p>
-<p class="text-secondary">.text-secondary</p>
-<p class="text-success">.text-success</p>
-<p class="text-danger">.text-danger</p>
-<p class="text-warning">.text-warning</p>
-<p class="text-info">.text-info</p>
-<p class="text-light bg-dark">.text-light</p>
-<p class="text-dark">.text-dark</p>
-<p class="text-muted">.text-muted</p>
-<p class="text-white bg-dark">.text-white</p>
-
-
-tailwind:
-
-<p class="text-sky-400/100">The quick brown fox...</p>
-<p class="text-sky-400/75">The quick brown fox...</p>
-<p class="text-sky-400/50">The quick brown fox...</p>
-<p class="text-sky-400/25">The quick brown fox...</p>
-<p class="text-sky-400/0">The quick brown fox...</p>
-
-special:
-<p class="text-[#50d71e]">The quick brown fox...</p>
-
-```
-
-
-in taiwild the special syntax "text-[...]" allows us are specifically in value that as want
-
-but maybe a most specifically feature usage is sistem grid, that is dofferent in between their.
+Bootstrap provides ready-made component classes and layout utilities. Tailwind CSS provides utility classes that you combine directly in your markup.
 
 ### Bootstrap
-- in bootstrap follow this path for build a good sistem grid: 
 
-```
-.container
-    .row
-        .col
-```
+Install Bootstrap in an npm project or copy the versioned CDN tags and integrity hashes from the [Bootstrap documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
 
-- are present differente types container you can finde in this <a href='https://getbootstrap.com/docs/4.0/layout/grid/'>link</a> 
-
-- remember taht you can insert more col in row but you can't insert more rows in the row.
-
-```
-    YES:
-    .container
-        .row
-            .col-6
-            .col-6
-            
-    NO:
-    .container
-        .row
-            .row
-            .row
+```sh
+npm install bootstrap
 ```
 
-but you can insert more rows in a col
-```
-.container
-    .row
-        .col
-            .row
-            .row
-```
-you can replace the cycle
+In a bundled JavaScript project, import `bootstrap/dist/css/bootstrap.min.css`. Import the JavaScript bundle if you use interactive Bootstrap components that require it.
 
-most important that you follow the great path 
+Bootstrap's default grid has 12 units per row. A `col-md-6` takes six units starting at the `md` breakpoint. Nest another row inside a column when you need a nested grid.
 
-```
-.container
-    .row
-        .col
-```
-
-- remember that you can max set of number of col 12.
-
-### Tailwind
-
-in tailwind, you can use the following path for construction the system grid:
-
-```
-<div class="min-h-screen flex items-center justify-center">
-  <div class="grid grid-cols-3 grid-rows-3 gap-4">
-    <div>Cell 1</div>
-    <div>Cell 2</div>
-    <div>Cell 3</div>
-    <div>Cell 4</div>
-    <div>Cell 5</div>
-    <div>Cell 6</div>
-    <div>Cell 7</div>
-    <div>Cell 8</div>
-    <div>Cell 9</div>
-  </div>
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-primary">First column</div>
+        <div class="col-md-6 text-success">Second column</div>
+    </div>
 </div>
 ```
 
-an example of system grid is:
+See the [Bootstrap grid documentation](https://getbootstrap.com/docs/5.3/layout/grid/).
 
-<img src='../assets/img/tailwind-grid.png' style=' height: 200px'>
+### Tailwind CSS
 
-is more similar to bootstrap because max number of columns are 12 (as bootstrap)
-but the substantial difference is that:
+In a Vite project, install Tailwind CSS and its Vite plugin.
 
-- bootstrap usage call as "conatiner, row and col"
-- tailwind usage only call "grid grid-cols grid-rows"
+```sh
+npm install tailwindcss @tailwindcss/vite
+```
 
-Us started say the main differences because are essential for start to say more argument in simple mode, having said that if you have a quetsion / problem you can write me for requesting help.
+Add `tailwindcss()` to the existing `plugins` array in your Vite config after importing it from `@tailwindcss/vite`. Add the following line to the CSS file imported by your app.
 
+```css
+@import "tailwindcss";
+```
+
+Use utilities such as `text-sky-400/75` for color opacity and `text-[#50d71e]` for a custom color. The grid utilities use CSS Grid and support custom track definitions.
+
+```html
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <div class="text-sky-400/75">Cell 1</div>
+    <div class="text-[#50d71e]">Cell 2</div>
+    <div>Cell 3</div>
+</div>
+```
+
+![Tailwind CSS grid example](../assets/img/tailwind-grid.png)
+
+See the [Tailwind CSS Vite installation guide](https://tailwindcss.com/docs/installation/using-vite).
