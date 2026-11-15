@@ -4,7 +4,7 @@ A collection of practical notes for developers learning web development. Each gu
 
 | Section | Topics |
 | --- | --- |
-| [Front-end](Front-End/readMe.md) | HTML, CSS, Bootstrap, Tailwind CSS, and React |
+| [Front-end](Front-End/readMe.md) | HTML, CSS, Bootstrap, Tailwind CSS, React, and Next.js |
 | [Back-end](Back-End/readMe.md) | Node.js, Express, file uploads, password hashing, and MongoDB with Mongoose |
 | [Google](Google/Google.md) | Google sign-in with Passport |
 
