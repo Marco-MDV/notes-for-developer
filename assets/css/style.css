@@ -1,70 +1,76 @@
-.img1{
+body {
+    margin: 2rem;
+    font-family: system-ui, sans-serif;
+}
+
+@supports (background-clip: text) {
+    h1 {
+        background-image: linear-gradient(90deg, #0e4b85, #2476b9);
+        background-clip: text;
+        color: transparent;
+    }
+}
+
+.examples,
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+figure {
+    margin: 0;
+}
+
+figure img {
+    display: block;
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    margin-top: 0.75rem;
+}
+
+.img1 {
     box-shadow: 10px 7px 20px orange;
 }
 
-.img2{
+.img2 {
     filter: drop-shadow(10px 7px 20px orange);
 }
 
-h1{
-    background-image: url("https://files.123freevectors.com/wp-content/original/105927-blue-and-white-diagonal-lines.jpg");
-    background-size: cover;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.cards{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.red{
-    background-color: red;
-}
-
-.blue{
-    background-color: blue;
-}
-
-.green{
-    background-color: green;
-}
-
-.cards .card{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    height: 100px;
+.card {
+    display: grid;
+    place-items: center;
     width: 100px;
+    height: 100px;
+    margin: 0;
     border-radius: 10px;
     color: white;
-    cursor: pointer;
-    transition: 400ms;
+    transition: transform 200ms ease, filter 200ms ease;
 }
 
-
-.cards .card p.tip{
-    font-size: 1em;
-    font-weight: 700;
+.red {
+    background-color: #a62d36;
 }
 
-.cards .card p.second-text{
-    font-size: 0.7em;
+.blue {
+    background-color: #254da8;
 }
 
-.cards .card:hover{
-    transform: scale(1.2,1.2);
+.green {
+    background-color: #22604a;
 }
 
-.cards:hover > .card:not(:hover){
-    filter: blur(10px);
-    transform: scale(0.9,0.9);
-}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .card:hover {
+        transform: scale(1.1);
+    }
 
+    .cards:has(.card:hover) > .card:not(:hover) {
+        filter: blur(2px);
+        transform: scale(0.95);
+    }
+}
