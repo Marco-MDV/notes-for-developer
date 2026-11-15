@@ -2,6 +2,8 @@
 
 Next.js is a framework built on React. It provides file-based routing, shared layouts, and server rendering. This guide uses the App Router and builds a small notes site with a list page, a dynamic detail page, and an interactive button. If you are new to JSX, props, or state, start with the [React notes](React.md).
 
+For the same example in plain JavaScript, see the [JavaScript version](Next.js-JavaScript.md).
+
 ## Create a project
 
 Use a supported Node.js LTS release and check the [Next.js installation requirements](https://nextjs.org/docs/app/getting-started/installation).
